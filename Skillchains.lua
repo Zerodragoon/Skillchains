@@ -25,7 +25,7 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ]]
-_addon.author = 'Ivaar'
+_addon.author = 'Ivaar, Zerodragoon'
 _addon.command = 'sc'
 _addon.name = 'SkillChains'
 _addon.version = '2.20.08.25'
