@@ -110,6 +110,7 @@ chainbound = {}
 chainbound[1] = L{'Compression','Liquefaction','Induration','Reverberation','Scission'}
 chainbound[2] = L{'Gravitation','Fragmentation','Distortion'} + chainbound[1]
 chainbound[3] = L{'Light','Darkness'} + chainbound[2]
+chainbound['weaponbash'] = chainbound[1] 
 
 local aeonic_weapon = {
     [20515] = 'Godhands',
@@ -382,6 +383,8 @@ end
 function action_handler(act)
     local actionpacket = ActionPacket.new(act)
     local category = actionpacket:get_category_string()
+	
+	--windower.add_to_chat(207,'category '..category..'')
 
     if not categories:contains(category) or act.param == 0 then
         return
@@ -399,6 +402,18 @@ function action_handler(act)
 	if category == 'weaponskill_finish' and actor == info.player then
 		locked = false
 	end
+	
+	--windower.add_to_chat(207,'actor '..inspect(actor)..'')
+	--windower.add_to_chat(207,'target '..inspect(target)..'')
+	--windower.add_to_chat(207,'Action '..inspect(action)..'')
+	--windower.add_to_chat(207,'Message id '..message_id..'')
+	--windower.add_to_chat(207,'add_effect '..tostring(add_effect)..'')
+	--windower.add_to_chat(207,'param '..inspect(param)..'')
+	--windower.add_to_chat(207,'resource '..inspect(resource)..'')
+	--windower.add_to_chat(207,'action_id '..inspect(action_id)..'')
+	--windower.add_to_chat(207,'interruption '..inspect(interruption)..'')
+	--windower.add_to_chat(207,'conclusion '..inspect(conclusion)..'')
+	--windower.add_to_chat(207,'Ability '..inspect(ability)..'')
 
     if add_effect and conclusion and skillchain_ids:contains(add_effect.message_id) then
         local skillchain = add_effect.animation:ucfirst()
@@ -416,8 +431,12 @@ function action_handler(act)
         apply_properties(target.id, resource, action_id, {skillchain}, delay, step, closed)
     elseif ability and (message_ids:contains(message_id) or message_id == 2 and buffs[actor] and chain_buff(buffs[actor])) then
         apply_properties(target.id, resource, action_id, aeonic_prop(ability, actor), ability.delay or 3, 1)
-    elseif message_id == 529 then
-        apply_properties(target.id, resource, action_id, chainbound[param], 2, 1, false, param)
+    elseif message_id == 529 or (message_id == 110 and action_id == 77) then
+		if (message_id == 110 and action_id == 77) then
+			apply_properties(target.id, resource, action_id, chainbound['weaponbash'], 2, 1, false, 1)
+		else
+			apply_properties(target.id, resource, action_id, chainbound[param], 2, 1, false, param)
+		end
     elseif message_id == 100 and buff_dur[param] then
         buffs[actor] = buffs[actor] or {}
         buffs[actor][param] = buff_dur[param] + os.time()
