@@ -1,3 +1,4 @@
+
 --[[
 Copyright © 2017, Ivaar
 All rights reserved.
@@ -36,6 +37,7 @@ require('actions')
 texts = require('texts')
 skills = require('skills')
 inspect = require('inspect')
+res = require 'resources'
 
 _static = S{'WAR','MNK','WHM','BLM','RDM','THF','PLD','DRK','BST','BRD','RNG','SAM','NIN','DRG','SMN','BLU','COR','PUP','DNC','SCH','GEO','RUN'}
 
@@ -52,6 +54,10 @@ skill_props = texts.new('',settings.display,settings)
 message_ids = S{110,185,187,317,802}
 skillchain_ids = S{288,289,290,291,292,293,294,295,296,297,298,299,300,301,385,386,387,388,389,390,391,392,393,394,395,396,397,767,768,769,770}
 buff_dur = {[163]=40,[164]=30,[470]=60}
+aftermath_base_id = 273
+aftermath_ids = T{270,271,272}
+aftermath_tp_points = T{1000, 2000, 3000}
+current_aftermath_level = 0
 info = {}
 resonating = {}
 buffs = {}
@@ -157,6 +163,16 @@ initialize = function(text, settings)
 			ws_to_use = load_ws_set(settings.wssets['default'])
 		end
 	end
+	
+	if windower.ffxi.get_player() then
+		for index, value in ipairs(aftermath_ids) do
+			if has_value(windower.ffxi.get_player().buffs, value) then
+				current_aftermath_level = index
+				break
+			end
+		end
+	end	
+	
     properties:append('${disp_info}')
     text:clear()
     text:append(properties:concat('\n'))
@@ -289,32 +305,20 @@ windower.register_event('prerender', function()
                 '\\cs(255,0,0)Wait  %.1f\\cr':format(delay - now) or
                 '\\cs(0,255,0)Go!   %.1f\\cr':format(timer)
 				
-			if windower.ffxi.get_player().vitals.tp > 1000 and auto_ws and delay <= now and not locked then				
-				local stepArray = ws_to_use[tostring(reson.step)]
-
-				if not stepArray then
-					stepArray = {}
-				end
-				
-				for index, value in ipairs(stepArray) do
-					if string.find(reson.disp_info:lower(), value:lower()) then
-						--windower.add_to_chat(207,'Match ws '..value..'')
-						schedule_tp(value)
-						break
-					end
-				end
+			if delay <= now then
+				fire_ws(tostring(reson.step), reson)
 			end
-        elseif settings.Show.burst[info.job] then
-			if windower.ffxi.get_player().vitals.tp > 1000 and auto_ws and skip_bursts and not locked then				
-				local stepArray = ws_to_use['0']
-				if stepArray then
-					--windower.add_to_chat(207,'Opening ws '..stepArray[1]..'')
-					schedule_tp(stepArray[1])
-				end
+				
+			if windower.ffxi.get_player().vitals.tp > 1000 and auto_ws and delay <= now and not locked then				
+				
+			end
+        elseif settings.Show.burst[info.job] or skip_bursts then
+			if skip_bursts then
+				fire_ws('0')
 			end
 			
-            reson.disp_info = ''
-            reson.timer = 'Burst %d':format(timer)
+			reson.disp_info = ''
+			reson.timer = 'Burst %d':format(timer)
         else
             resonating[targ_id] = nil
             return
@@ -325,18 +329,41 @@ windower.register_event('prerender', function()
         skill_props:update(reson)
         skill_props:show()
 	elseif targ and targ.hpp > 0 and (not reson or timer <= 0 or skip_bursts) then
-		if windower.ffxi.get_player().vitals.tp > 1000 and auto_ws and not locked then				
-			local stepArray = ws_to_use['0']
-			if stepArray then
-				--windower.add_to_chat(207,'Opening ws '..stepArray[1]..'')
-				schedule_tp(stepArray[1])
-			end
-		end
+		fire_ws('0')
 		skill_props:hide()
     elseif not visible then
         skill_props:hide()
     end
 end)
+
+function fire_ws(step, reson)
+	if windower.ffxi.get_player().vitals.tp > 1000 and auto_ws and not locked then				
+		local stepArray = ws_to_use[step]
+
+		if not stepArray then
+			stepArray = {}
+		end
+		
+		for index, value in ipairs(stepArray) do
+			if step == '0' or (reson and string.find(reson.disp_info:lower(), value['weapon_skill']:lower())) then
+				local tppoint = tonumber(value['tp_point']) 
+				local force_aftermath = false
+
+				if step == '0' and value['aftermath'] > 0 and current_aftermath_level < value['aftermath'] then
+					tppoint = aftermath_tp_points[value['aftermath']]
+					force_aftermath = true
+				end
+								
+				if windower.ffxi.get_player().vitals.tp >= tppoint then
+					schedule_tp(value['weapon_skill'])
+					break
+				elseif force_aftermath then
+					break
+				end
+			end
+		end
+	end
+end
 
 function check_buff(t, i)
     if t[i] == true or t[i] - os.time() > 0 then
@@ -445,6 +472,26 @@ end
 
 ActionPacket.open_listener(action_handler)
 
+windower.register_event('gain buff', function(id) 
+	if has_value(aftermath_ids + aftermath_base_id, id) then
+		coroutine.schedule(function() 
+
+			for index, value in ipairs(aftermath_ids) do
+				if has_value(windower.ffxi.get_player().buffs, value) then
+					current_aftermath_level = index
+					break
+				end
+			end
+		end, .5)
+	end
+end)
+
+windower.register_event('lose buff', function(id) 
+	if has_value(aftermath_ids + aftermath_base_id, id) then
+		current_aftermath_level = 0
+	end
+end)
+
 windower.register_event('incoming chunk', function(id, data)
     if id == 0x29 and data:unpack('H', 25) == 206 and data:unpack('I', 9) == info.player then
         buffs[info.player][data:unpack('H', 13)] = nil
@@ -492,8 +539,10 @@ windower.register_event('addon command', function(cmd, ...)
         else
             settings.Show[cmd]:remove(info.job)
         end
+		local temp_ws_to_use = ws_to_use
         config.save(settings)
         config.reload(settings)
+		ws_to_use = temp_ws_to_use
         windower.add_to_chat(207, '%s: %s info will no%s be displayed on %s.':format(_addon.name, cmd, key and ' longer' or 'w', info.job))--'t' or 'w'
     elseif type(default[cmd]) == 'boolean' then
         settings[cmd] = not settings[cmd]
@@ -511,17 +560,36 @@ windower.register_event('addon command', function(cmd, ...)
 	elseif cmd == 'setws' then
 		local ws = unpack({select(1, ...)})
 		local step = unpack({select(2, ...)})
+		local tppoint = unpack({select(3, ...)})
+		local aftermath = unpack({select(4, ...)})
+
+		if not tppoint then
+			tppoint = 1000
+		end
 		
+		if not aftermath then
+			aftermath = 0
+		else 
+			aftermath = tonumber(aftermath)
+		end
+
 		local stepArray = ws_to_use[step]
 		
 		if not stepArray then
 			stepArray = {}
 		end
 		
-		if not has_value(stepArray, ws) then
-			windower.add_to_chat(207,'WS Added : '..ws..' at step '..step..'')
-			--stepArray[tableSize(stepArray)] = ws
-			table.insert(stepArray, ws)
+		if not has_ws_value(stepArray, ws) then
+			if step == '0' then
+				windower.add_to_chat(207,'WS Added : '..ws..' at step '..step..' with tp point '..tppoint..' aftermath lvl '..aftermath..'')
+			else
+				windower.add_to_chat(207,'WS Added : '..ws..' at step '..step..' with tp point '..tppoint..'')
+			end
+			local full_ws = {}
+			full_ws['weapon_skill'] = ws
+			full_ws['tp_point'] = tppoint
+			full_ws['aftermath'] = aftermath
+			table.insert(stepArray, full_ws)
 		end
 
 		ws_to_use[step] = stepArray
@@ -532,20 +600,7 @@ windower.register_event('addon command', function(cmd, ...)
 	elseif cmd == 'saveset' then
 		local setname = unpack({select(1, ...)})
 		
-		local ws_to_save = T{}
-		
-		for index, value in pairs(ws_to_use) do
-			local step_array_to_save = {}
-			
-			for index, value in ipairs(value) do
-				step_array_to_save[tostring(index)] = value
-			end
-			
-			ws_to_save[tostring(index)] = step_array_to_save
-		end
-		
-		settings.wssets[setname] = ws_to_save
-		config.save(settings, 'all')
+		save_ws_set(setname)
 	elseif cmd == 'deleteset' then
 		local setname = unpack({select(1, ...)})
 		
@@ -581,6 +636,23 @@ function tableSize(tab)
   return count
 end
 
+function save_ws_set (setname) 
+	local ws_to_save = T{}
+		
+	for index, value in pairs(ws_to_use) do
+		local step_array_to_save = {}
+		
+		for index, value in ipairs(value) do
+			step_array_to_save[tostring(index)] = value
+		end
+		
+		ws_to_save[tostring(index)] = step_array_to_save
+	end
+	
+	settings.wssets[setname] = ws_to_save
+	config.save(settings, 'all')
+end
+
 function load_ws_set (wsset) 
 	local temp_ws_to_use = {}
 
@@ -597,7 +669,13 @@ function load_ws_set (wsset)
 		
 		for i = 1, #ordered_keys do
 			local index, innerValue = ordered_keys[i], value[ ordered_keys[i] ]
-			table.insert(stepArray, innerValue)
+			local local_ws = {}
+						
+			local_ws['weapon_skill'] = innerValue['weapon_skill']
+			local_ws['tp_point'] = innerValue['tp_point']
+			local_ws['aftermath'] = tonumber(innerValue['aftermath'])
+
+			table.insert(stepArray, local_ws)
 		end
 		
 		temp_ws_to_use[index] = stepArray
@@ -609,6 +687,16 @@ end
 function has_value (tab, val)
     for index, value in ipairs(tab) do
         if value == val then
+            return true
+        end
+    end
+
+    return false
+end
+
+function has_ws_value (tab, val)
+    for index, value in ipairs(tab) do
+        if value['weapon_skill'] == val then
             return true
         end
     end

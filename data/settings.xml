@@ -2,13 +2,13 @@
 <settings>
     <global>
         <Show>
-            <burst>BST,GEO,WHM,DRG,NIN,COR,SCH,DRK,DNC,BLM,RDM,RNG,PUP,SAM,RUN,MNK,WAR,THF,SMN,BRD,PLD,BLU</burst>
+            <burst>BST,GEO,WHM,DRG,NIN,COR,SCH,DRK,DNC,SAM,RDM,RNG,PUP,BLU,RUN,BLM,WAR,THF,SMN,BRD,PLD,MNK</burst>
             <pet>BST,SMN</pet>
-            <props>BST,GEO,WHM,DRG,NIN,COR,SCH,DRK,DNC,BLM,RDM,RNG,PUP,SAM,RUN,MNK,WAR,THF,SMN,BRD,PLD,BLU</props>
+            <props>BST,GEO,WHM,DRG,NIN,COR,SCH,DRK,DNC,SAM,RDM,RNG,PUP,BLU,RUN,BLM,WAR,THF,SMN,BRD,PLD,MNK</props>
             <spell>SCH,BLU</spell>
-            <step>BST,GEO,WHM,DRG,NIN,COR,SCH,DRK,DNC,BLM,RDM,RNG,PUP,SAM,RUN,MNK,WAR,THF,SMN,BRD,PLD,BLU</step>
-            <timer>BST,GEO,WHM,DRG,NIN,COR,SCH,DRK,DNC,BLM,RDM,RNG,PUP,SAM,RUN,MNK,WAR,THF,SMN,BRD,PLD,BLU</timer>
-            <weapon>BST,GEO,WHM,DRG,NIN,COR,SCH,DRK,DNC,BLM,RDM,RNG,PUP,SAM,RUN,MNK,WAR,THF,SMN,BRD,PLD,BLU</weapon>
+            <step>BST,GEO,WHM,DRG,NIN,COR,SCH,DRK,DNC,SAM,RDM,RNG,PUP,BLU,RUN,BLM,WAR,THF,SMN,BRD,PLD,MNK</step>
+            <timer>BST,GEO,WHM,DRG,NIN,COR,SCH,DRK,DNC,SAM,RDM,RNG,PUP,BLU,RUN,BLM,WAR,THF,SMN,BRD,PLD,MNK</timer>
+            <weapon>BST,GEO,WHM,DRG,NIN,COR,SCH,DRK,DNC,SAM,RDM,RNG,PUP,BLU,RUN,BLM,WAR,THF,SMN,BRD,PLD,MNK</weapon>
         </Show>
         <UpdateFrequency>0.2</UpdateFrequency>
         <aeonic>false</aeonic>
@@ -56,41 +56,54 @@
             <default>
 
             </default>
-            <fudo>
+            <rngdefault>
                 <0>
-                    <1>Tachi: Fudo</1>
+                    <1>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Savage Blade</weapon_skill>
+                    </1>
                 </0>
                 <1>
-                    <1>Tachi: Fudo</1>
-                </1>
-            </fudo>
-            <rngfourstat>
-                <0>
-                    <1>Savage Blade</1>
-                </0>
-                <1>
-                    <1>Savage Blade</1>
-                    <2>Last Stand</2>
+                    <1>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Savage Blade</weapon_skill>
+                    </1>
+                    <2>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Last Stand</weapon_skill>
+                    </2>
                 </1>
                 <2>
-                    <1>Last Stand</1>
+                    <1>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Last Stand</weapon_skill>
+                    </1>
                 </2>
                 <3>
-                    <1>Last Stand</1>
+                    <1>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Last Stand</weapon_skill>
+                    </1>
                 </3>
-            </rngfourstat>
-            <rngthreestep>
+            </rngdefault>
+            <test2>
                 <0>
-                    <1>Savage Blade</1>
+                    <1>
+                        <tp_point>2000</tp_point>
+                        <weapon_skill>Upheaval</weapon_skill>
+                    </1>
                 </0>
                 <1>
-                    <1>Savage Blade</1>
-                    <2>Last Stand</2>
+                    <1>
+                        <tp_point>1500</tp_point>
+                        <weapon_skill>Upheaval</weapon_skill>
+                    </1>
+                    <2>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Ukko&apos;s Fury</weapon_skill>
+                    </2>
                 </1>
-                <2>
-                    <1>Last Stand</1>
-                </2>
-            </rngthreestep>
+            </test2>
         </wssets>
     </global>
 </settings>

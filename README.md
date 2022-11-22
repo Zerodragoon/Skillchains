@@ -36,11 +36,14 @@ The following commands are related to the added auto skillchain functionality.
     
     //sc skipbursts -- skip the burst phase of a skillchain and reopen a skillchain if available, off by default
     
-    //sc setws -- set the weaponskills available for a given step, starts at index 0 for opening a skillchain, 1 for first step, 2 for second step etc
+    //sc setws "WS Name" Step TPAmount(Optional, Required if aftermath level is desired) AftermathLevel(Optional) -- set the weaponskills available for a given step, starts at index 0 for opening a skillchain, 1 for first step, 2 for second step etc
                -- multiple weaponskills can be set per step other than the initial opening weaponskill and will be used in the order added if valid for the weaponskill
-               -- example configuration, this will open with savage blade, do step 1 with savage or last stand and do step 2 with last stand if those weaponskills                       would confinue the skillchain
-                  //sc setws "Savage Blade" 0
-                  //sc setws "Savage Blade" 1
+			   -- tp points for specific weapons skills can also be set per ws and step
+			   -- aftermath can be force for the opening ws only, if you do not currently have the requsted aftermath level it will hold tp until you have enough and then use the marked ws
+               -- example configuration, this will maintain aftermath with last stand or open with savage blade, do step 1 with savage over 2k tp or last stand and do step 2 with last stand if those weaponskills would continue the skillchain 
+                  //sc setws "Last Stand" 0 3000 3
+				  //sc setws "Savage Blade" 0
+                  //sc setws "Savage Blade" 1 2000
                   //sc setws "Last Stand" 1
                   //sc setws "Last Stand" 2
                   
