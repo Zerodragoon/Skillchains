@@ -48,6 +48,9 @@ default.aeonic = false
 default.color = false
 default.display = {text={size=12,font='Consolas'},pos={x=0,y=0},bg={visible=true}}
 default.wssets = T{default = T{}}
+default.skip_bursts = false
+default.skip_unchainable = false
+default.auto_ws = true
 
 settings = config.load(default)
 skill_props = texts.new('',settings.display,settings)
@@ -61,8 +64,6 @@ current_aftermath_level = 0
 info = {}
 resonating = {}
 buffs = {}
-auto_ws = true
-skip_bursts = false
 locked = false
 ws_to_use = {}
 
@@ -163,7 +164,7 @@ initialize = function(text, settings)
 			ws_to_use = load_ws_set(settings.wssets['default'])
 		end
 	end
-	
+
 	if windower.ffxi.get_player() then
 		for index, value in ipairs(aftermath_ids) do
 			if has_value(windower.ffxi.get_player().buffs, value) then
@@ -307,13 +308,13 @@ windower.register_event('prerender', function()
 				
 			if delay <= now then
 				fire_ws(tostring(reson.step), reson)
-			end
 				
-			if windower.ffxi.get_player().vitals.tp > 1000 and auto_ws and delay <= now and not locked then				
-				
+				if settings.skip_unchainable then
+					fire_ws('0')
+				end
 			end
-        elseif settings.Show.burst[info.job] or skip_bursts then
-			if skip_bursts then
+        elseif settings.Show.burst[info.job] or settings.skip_bursts then
+			if settings.skip_bursts then
 				fire_ws('0')
 			end
 			
@@ -328,7 +329,7 @@ windower.register_event('prerender', function()
         reson.elements = reson.elements or reson.step > 1 and settings.Show.burst[info.job] and '(%s)':format(colorize(sc_info[reson.active[1]])) or ''
         skill_props:update(reson)
         skill_props:show()
-	elseif targ and targ.hpp > 0 and (not reson or timer <= 0 or skip_bursts) then
+	elseif targ and targ.hpp > 0 and (not reson or timer <= 0 or settings.skip_bursts or settings.skip_unchainable) then
 		fire_ws('0')
 		skill_props:hide()
     elseif not visible then
@@ -337,7 +338,7 @@ windower.register_event('prerender', function()
 end)
 
 function fire_ws(step, reson)
-	if windower.ffxi.get_player().vitals.tp > 1000 and auto_ws and not locked then				
+	if windower.ffxi.get_player().vitals.tp > 1000 and settings.auto_ws and not locked then				
 		local stepArray = ws_to_use[step]
 
 		if not stepArray then
@@ -550,13 +551,17 @@ windower.register_event('addon command', function(cmd, ...)
     elseif cmd == 'eval' then
         assert(loadstring(table.concat({...}, ' ')))()
 	elseif cmd == 'autows' then
-		windower.add_to_chat(207,'Auto WS Set: '..tostring(not auto_ws)..'')
+		windower.add_to_chat(207,'Auto WS Set: '..tostring(not settings.auto_ws)..'')
 
-		auto_ws = not auto_ws
+		settings.auto_ws = not settings.auto_ws
 	elseif cmd == 'skipbursts' then
-		windower.add_to_chat(207,'Skip Bursts Set: '..tostring(not skip_bursts)..'')
+		windower.add_to_chat(207,'Skip Bursts Set: '..tostring(not settings.skip_bursts)..'')
 
-		skip_bursts = not skip_bursts
+		settings.skip_bursts = not settings.skip_bursts
+	elseif cmd == 'skipunchainable' then
+		windower.add_to_chat(207,'Skip Unchainable Set: '..tostring(not settings.skip_unchainable)..'')
+
+		settings.skip_unchainable = not settings.skip_unchainable
 	elseif cmd == 'setws' then
 		local ws = unpack({select(1, ...)})
 		local step = unpack({select(2, ...)})
@@ -622,7 +627,7 @@ windower.register_event('addon command', function(cmd, ...)
 			windower.add_to_chat(207,''..index..' \n')
 		end
     else
-        windower.add_to_chat(207, '%s: valid commands [save | move | burst | weapon | spell | pet | props | step | timer | color | aeonic | autows | skipbursts | setws | printws | clearws | saveset | loadset | deleteset | printsets]':format(_addon.name))
+        windower.add_to_chat(207, '%s: valid commands [save | move | burst | weapon | spell | pet | props | step | timer | color | aeonic | autows | skipbursts | skipunchainable | setws | printws | clearws | saveset | loadset | deleteset | printsets]':format(_addon.name))
     end
 end)
 
@@ -714,7 +719,7 @@ function schedule_tp(ws)
 			coroutine.schedule(function() 
 				locked = false
 			end, 2)
-		end, .5)
+		end, .2)
 	end
 end
 
