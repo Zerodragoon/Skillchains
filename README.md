@@ -34,7 +34,9 @@ The following commands are related to the added auto skillchain functionality.
 
     //sc autows -- enables auto weaponskilling and skillchaining, on by default
     
-    //sc skipbursts -- skip the burst phase of a skillchain and reopen a skillchain if available, off by default
+    //sc skipbursts -- skip the burst phase of a skillchain and reopen a skillchain, off by default
+    
+    //sc skipunchainable -- skip unchainable (skillchains you do not have a correct ws set for) skillchains and reopen a skillchain, off by default
     
     //sc setws "WS Name" Step TPAmount(Optional, Required if aftermath level is desired) AftermathLevel(Optional) -- set the weaponskills available for a given step, starts at index 0 for opening a skillchain, 1 for first step, 2 for second step etc
                -- multiple weaponskills can be set per step other than the initial opening weaponskill and will be used in the order added if valid for the weaponskill
