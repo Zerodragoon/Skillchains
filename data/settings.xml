@@ -2,13 +2,13 @@
 <settings>
     <global>
         <Show>
-            <burst>BST,GEO,WHM,DRG,NIN,COR,BLU,DRK,DNC,MNK,RDM,RNG,PUP,SCH,RUN,BLM,WAR,THF,SMN,BRD,PLD,SAM</burst>
+            <burst>BST,GEO,WHM,DRG,NIN,COR,BLU,DRK,DNC,BLM,RDM,RNG,PUP,MNK,RUN,SAM,WAR,THF,SMN,BRD,PLD,SCH</burst>
             <pet>BST,SMN</pet>
-            <props>BST,GEO,WHM,DRG,NIN,COR,BLU,DRK,DNC,MNK,RDM,RNG,PUP,SCH,RUN,BLM,WAR,THF,SMN,BRD,PLD,SAM</props>
+            <props>BST,GEO,WHM,DRG,NIN,COR,BLU,DRK,DNC,BLM,RDM,RNG,PUP,MNK,RUN,SAM,WAR,THF,SMN,BRD,PLD,SCH</props>
             <spell>SCH,BLU</spell>
-            <step>BST,GEO,WHM,DRG,NIN,COR,BLU,DRK,DNC,MNK,RDM,RNG,PUP,SCH,RUN,BLM,WAR,THF,SMN,BRD,PLD,SAM</step>
-            <timer>BST,GEO,WHM,DRG,NIN,COR,BLU,DRK,DNC,MNK,RDM,RNG,PUP,SCH,RUN,BLM,WAR,THF,SMN,BRD,PLD,SAM</timer>
-            <weapon>BST,GEO,WHM,DRG,NIN,COR,BLU,DRK,DNC,MNK,RDM,RNG,PUP,SCH,RUN,BLM,WAR,THF,SMN,BRD,PLD,SAM</weapon>
+            <step>BST,GEO,WHM,DRG,NIN,COR,BLU,DRK,DNC,BLM,RDM,RNG,PUP,MNK,RUN,SAM,WAR,THF,SMN,BRD,PLD,SCH</step>
+            <timer>BST,GEO,WHM,DRG,NIN,COR,BLU,DRK,DNC,BLM,RDM,RNG,PUP,MNK,RUN,SAM,WAR,THF,SMN,BRD,PLD,SCH</timer>
+            <weapon>BST,GEO,WHM,DRG,NIN,COR,BLU,DRK,DNC,BLM,RDM,RNG,PUP,MNK,RUN,SAM,WAR,THF,SMN,BRD,PLD,SCH</weapon>
         </Show>
         <UpdateFrequency>0.2</UpdateFrequency>
         <aeonic>false</aeonic>
@@ -31,8 +31,8 @@
             </flags>
             <padding>0</padding>
             <pos>
-                <x>1297</x>
-                <y>48</y>
+                <x>1941</x>
+                <y>49</y>
             </pos>
             <text>
                 <alpha>255</alpha>
@@ -56,304 +56,484 @@
         <skip_bursts>false</skip_bursts>
         <skip_unchainable>false</skip_unchainable>
         <wssets>
-            <aeolianedge>
+            <axe>
                 <0>
                     <1>
                         <aftermath>0</aftermath>
-                        <tp_point>1500</tp_point>
-                        <weapon_skill>Aeolian Edge</weapon_skill>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Calamity</weapon_skill>
+                    </1>
+                    <2>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Decimation</weapon_skill>
+                    </2>
+                </0>
+                <1>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Calamity</weapon_skill>
+                    </1>
+                    <2>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Mistral Axe</weapon_skill>
+                    </2>
+                    <3>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Decimation</weapon_skill>
+                    </3>
+                </1>
+                <2>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Calamity</weapon_skill>
+                    </1>
+                    <2>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Mistral Axe</weapon_skill>
+                    </2>
+                    <3>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Decimation</weapon_skill>
+                    </3>
+                </2>
+            </axe>
+            <cormagic>
+                <0>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Savage Blade</weapon_skill>
                     </1>
                 </0>
                 <1>
                     <1>
                         <aftermath>0</aftermath>
                         <tp_point>1000</tp_point>
-                        <weapon_skill>Aeolian Edge</weapon_skill>
+                        <weapon_skill>Savage Blade</weapon_skill>
+                    </1>
+                    <2>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Leaden Salute</weapon_skill>
+                    </2>
+                </1>
+                <2>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Leaden Salute</weapon_skill>
+                    </1>
+                    <2>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Wildfire</weapon_skill>
+                    </2>
+                </2>
+                <3>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Wildfire</weapon_skill>
+                    </1>
+                </3>
+            </cormagic>
+            <corsolo>
+                <0>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Leaden Salute</weapon_skill>
+                    </1>
+                </0>
+                <1>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Viper Bite</weapon_skill>
                     </1>
                 </1>
                 <2>
                     <1>
                         <aftermath>0</aftermath>
                         <tp_point>1000</tp_point>
-                        <weapon_skill>Aeolian Edge</weapon_skill>
+                        <weapon_skill>Leaden Salute</weapon_skill>
                     </1>
                 </2>
                 <3>
                     <1>
                         <aftermath>0</aftermath>
                         <tp_point>1000</tp_point>
-                        <weapon_skill>Aeolian Edge</weapon_skill>
+                        <weapon_skill>Wildfire</weapon_skill>
                     </1>
                 </3>
-            </aeolianedge>
+            </corsolo>
+            <decimation>
+                <0>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Decimation</weapon_skill>
+                    </1>
+                </0>
+                <1>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Decimation</weapon_skill>
+                    </1>
+                </1>
+                <2>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Decimation</weapon_skill>
+                    </1>
+                </2>
+            </decimation>
             <default>
 
             </default>
-            <rngdefault>
+            <drgfivestep>
                 <0>
                     <1>
                         <aftermath>0</aftermath>
                         <tp_point>1000</tp_point>
-                        <weapon_skill>Savage Blade</weapon_skill>
+                        <weapon_skill>Drakesbane</weapon_skill>
                     </1>
                 </0>
                 <1>
                     <1>
                         <aftermath>0</aftermath>
                         <tp_point>1000</tp_point>
-                        <weapon_skill>Savage Blade</weapon_skill>
+                        <weapon_skill>Stardiver</weapon_skill>
                     </1>
-                    <2>
-                        <aftermath>0</aftermath>
-                        <tp_point>1000</tp_point>
-                        <weapon_skill>Last Stand</weapon_skill>
-                    </2>
                 </1>
                 <2>
                     <1>
                         <aftermath>0</aftermath>
                         <tp_point>1000</tp_point>
-                        <weapon_skill>Last Stand</weapon_skill>
+                        <weapon_skill>Camlann&apos;s Torment</weapon_skill>
                     </1>
                 </2>
                 <3>
                     <1>
                         <aftermath>0</aftermath>
                         <tp_point>1000</tp_point>
-                        <weapon_skill>Last Stand</weapon_skill>
-                    </1>
-                </3>
-            </rngdefault>
-            <rngsavage>
-                <0>
-                    <1>
-                        <aftermath>0</aftermath>
-                        <tp_point>1750</tp_point>
-                        <weapon_skill>Savage Blade</weapon_skill>
-                    </1>
-                </0>
-                <1>
-                    <1>
-                        <aftermath>0</aftermath>
-                        <tp_point>1000</tp_point>
-                        <weapon_skill>Savage Blade</weapon_skill>
-                    </1>
-                </1>
-                <2>
-                    <1>
-                        <aftermath>0</aftermath>
-                        <tp_point>1000</tp_point>
-                        <weapon_skill>Savage Blade</weapon_skill>
-                    </1>
-                </2>
-                <3>
-                    <1>
-                        <aftermath>0</aftermath>
-                        <tp_point>1000</tp_point>
-                        <weapon_skill>Savage Blade</weapon_skill>
-                    </1>
-                </3>
-            </rngsavage>
-            <rngtrueflight>
-                <0>
-                    <1>
-                        <aftermath>0</aftermath>
-                        <tp_point>3000</tp_point>
-                        <weapon_skill>Trueflight</weapon_skill>
-                    </1>
-                </0>
-                <1>
-                    <1>
-                        <aftermath>0</aftermath>
-                        <tp_point>1000</tp_point>
-                        <weapon_skill>Trueflight</weapon_skill>
-                    </1>
-                </1>
-                <2>
-                    <1>
-                        <aftermath>0</aftermath>
-                        <tp_point>1000</tp_point>
-                        <weapon_skill>Last Stand</weapon_skill>
-                    </1>
-                </2>
-                <3>
-                    <1>
-                        <aftermath>0</aftermath>
-                        <tp_point>1000</tp_point>
-                        <weapon_skill>Trueflight</weapon_skill>
-                    </1>
-                </3>
-            </rngtrueflight>
-            <rngtrueflight2>
-                <0>
-                    <2>
-                        <aftermath>0</aftermath>
-                        <tp_point>2750</tp_point>
-                        <weapon_skill>Trueflight</weapon_skill>
-                    </2>
-                </0>
-                <1>
-                    <1>
-                        <aftermath>0</aftermath>
-                        <tp_point>1000</tp_point>
-                        <weapon_skill>Trueflight</weapon_skill>
-                    </1>
-                    <2>
-                        <aftermath>0</aftermath>
-                        <tp_point>1000</tp_point>
-                        <weapon_skill>Last Stand</weapon_skill>
-                    </2>
-                </1>
-                <2>
-                    <1>
-                        <aftermath>0</aftermath>
-                        <tp_point>1000</tp_point>
-                        <weapon_skill>Trueflight</weapon_skill>
-                    </1>
-                    <2>
-                        <aftermath>0</aftermath>
-                        <tp_point>1000</tp_point>
-                        <weapon_skill>Last Stand</weapon_skill>
-                    </2>
-                </2>
-                <3>
-                    <1>
-                        <aftermath>0</aftermath>
-                        <tp_point>1000</tp_point>
-                        <weapon_skill>Trueflight</weapon_skill>
-                    </1>
-                    <2>
-                        <aftermath>0</aftermath>
-                        <tp_point>1000</tp_point>
-                        <weapon_skill>Last Stand</weapon_skill>
-                    </2>
-                </3>
-            </rngtrueflight2>
-            <savageblade>
-                <0>
-                    <1>
-                        <aftermath>0</aftermath>
-                        <tp_point>1000</tp_point>
-                        <weapon_skill>Savage Blade</weapon_skill>
-                    </1>
-                </0>
-                <1>
-                    <1>
-                        <aftermath>0</aftermath>
-                        <tp_point>1000</tp_point>
-                        <weapon_skill>Savage Blade</weapon_skill>
-                    </1>
-                </1>
-                <2>
-                    <1>
-                        <aftermath>0</aftermath>
-                        <tp_point>1000</tp_point>
-                        <weapon_skill>Savage Blade</weapon_skill>
-                    </1>
-                </2>
-            </savageblade>
-            <smndefault>
-                <0>
-                    <1>
-                        <aftermath>3</aftermath>
-                        <tp_point>3000</tp_point>
-                        <weapon_skill>Garland of Bliss</weapon_skill>
-                    </1>
-                    <2>
-                        <aftermath>0</aftermath>
-                        <tp_point>1500</tp_point>
-                        <weapon_skill>Earth Crusher</weapon_skill>
-                    </2>
-                </0>
-            </smndefault>
-            <warfivestep>
-                <0>
-                    <1>
-                        <aftermath>0</aftermath>
-                        <tp_point>1000</tp_point>
-                        <weapon_skill>Ukko&apos;s Fury</weapon_skill>
-                    </1>
-                </0>
-                <1>
-                    <1>
-                        <aftermath>0</aftermath>
-                        <tp_point>1000</tp_point>
-                        <weapon_skill>Steel Cyclone</weapon_skill>
-                    </1>
-                    <2>
-                        <aftermath>0</aftermath>
-                        <tp_point>1000</tp_point>
-                        <weapon_skill>Upheaval</weapon_skill>
-                    </2>
-                </1>
-                <2>
-                    <1>
-                        <aftermath>0</aftermath>
-                        <tp_point>1000</tp_point>
-                        <weapon_skill>Upheaval</weapon_skill>
-                    </1>
-                    <2>
-                        <aftermath>0</aftermath>
-                        <tp_point>1000</tp_point>
-                        <weapon_skill>Ukko&apos;s Fury</weapon_skill>
-                    </2>
-                </2>
-                <3>
-                    <1>
-                        <aftermath>0</aftermath>
-                        <tp_point>1000</tp_point>
-                        <weapon_skill>Ukko&apos;s Fury</weapon_skill>
+                        <weapon_skill>Drakesbane</weapon_skill>
                     </1>
                 </3>
                 <4>
                     <1>
                         <aftermath>0</aftermath>
                         <tp_point>1000</tp_point>
-                        <weapon_skill>Upheaval</weapon_skill>
+                        <weapon_skill>Camlann&apos;s Torment</weapon_skill>
                     </1>
                 </4>
-            </warfivestep>
-            <warfourstep>
+            </drgfivestep>
+            <drgninblu>
                 <0>
                     <1>
                         <aftermath>0</aftermath>
                         <tp_point>1000</tp_point>
-                        <weapon_skill>Ukko&apos;s Fury</weapon_skill>
+                        <weapon_skill>Impulse Drive</weapon_skill>
+                    </1>
+                </0>
+                <2>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>2000</tp_point>
+                        <weapon_skill>Raiden Thrust</weapon_skill>
+                    </1>
+                </2>
+                <3>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>3000</tp_point>
+                        <weapon_skill>Penta Thrust</weapon_skill>
+                    </1>
+                </3>
+            </drgninblu>
+            <expaichain>
+                <0>
+                    <1>
+                        <aftermath>3</aftermath>
+                        <tp_point>3000</tp_point>
+                        <weapon_skill>Expiacion</weapon_skill>
                     </1>
                 </0>
                 <1>
                     <1>
                         <aftermath>0</aftermath>
                         <tp_point>1000</tp_point>
-                        <weapon_skill>Steel Cyclone</weapon_skill>
+                        <weapon_skill>Expiacion</weapon_skill>
                     </1>
                 </1>
+                <3>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Savage Blade</weapon_skill>
+                    </1>
+                </3>
+            </expaichain>
+            <expaifourstep>
+                <0>
+                    <1>
+                        <aftermath>3</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Expiacion</weapon_skill>
+                    </1>
+                </0>
                 <2>
                     <1>
                         <aftermath>0</aftermath>
                         <tp_point>1000</tp_point>
-                        <weapon_skill>Upheaval</weapon_skill>
+                        <weapon_skill>Savage Blade</weapon_skill>
                     </1>
                 </2>
                 <3>
                     <1>
                         <aftermath>0</aftermath>
                         <tp_point>1000</tp_point>
-                        <weapon_skill>Ukko&apos;s Fury</weapon_skill>
+                        <weapon_skill>Chant du Cygne</weapon_skill>
                     </1>
                 </3>
-            </warfourstep>
+            </expaifourstep>
+            <jinpu>
+                <0>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Tachi: Jinpu</weapon_skill>
+                    </1>
+                </0>
+                <1>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Tachi: Jinpu</weapon_skill>
+                    </1>
+                </1>
+                <2>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Tachi: Jinpu</weapon_skill>
+                    </1>
+                </2>
+                <3>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Tachi: Jinpu</weapon_skill>
+                    </1>
+                </3>
+                <4>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Tachi: Jinpu</weapon_skill>
+                    </1>
+                </4>
+                <5>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Tachi: Jinpu</weapon_skill>
+                    </1>
+                </5>
+                <6>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Tachi: Jinpu</weapon_skill>
+                    </1>
+                </6>
+                <7>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Tachi: Jinpu</weapon_skill>
+                    </1>
+                </7>
+            </jinpu>
+            <jinpuspam>
+                <0>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Tachi: Jinpu</weapon_skill>
+                    </1>
+                </0>
+                <1>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Tachi: Jinpu</weapon_skill>
+                    </1>
+                </1>
+                <2>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Tachi: Jinpu</weapon_skill>
+                    </1>
+                </2>
+                <3>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Tachi: Jinpu</weapon_skill>
+                    </1>
+                </3>
+                <4>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Tachi: Jinpu</weapon_skill>
+                    </1>
+                </4>
+                <5>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Tachi: Jinpu</weapon_skill>
+                    </1>
+                </5>
+                <6>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Tachi: Jinpu</weapon_skill>
+                    </1>
+                </6>
+            </jinpuspam>
+            <rudra>
+                <0>
+                    <1>
+                        <aftermath>3</aftermath>
+                        <tp_point>1500</tp_point>
+                        <weapon_skill>Rudra&apos;s Storm</weapon_skill>
+                    </1>
+                </0>
+                <1>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1500</tp_point>
+                        <weapon_skill>Rudra&apos;s Storm</weapon_skill>
+                    </1>
+                </1>
+                <2>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Rudra&apos;s Storm</weapon_skill>
+                    </1>
+                </2>
+                <3>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Rudra&apos;s Storm</weapon_skill>
+                    </1>
+                </3>
+            </rudra>
+            <savagespam>
+                <0>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Savage Blade</weapon_skill>
+                    </1>
+                </0>
+                <1>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Savage Blade</weapon_skill>
+                    </1>
+                    <2>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Leaden Salute</weapon_skill>
+                    </2>
+                </1>
+                <2>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Leaden Salute</weapon_skill>
+                    </1>
+                    <2>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Wildfire</weapon_skill>
+                    </2>
+                    <3>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Savage Blade</weapon_skill>
+                    </3>
+                </2>
+                <3>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Wildfire</weapon_skill>
+                    </1>
+                </3>
+            </savagespam>
+            <ukkosfell>
+                <0>
+                    <1>
+                        <aftermath>3</aftermath>
+                        <tp_point>3000</tp_point>
+                        <weapon_skill>Ukko&apos;s Fury</weapon_skill>
+                    </1>
+                    <2>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Fell Cleave</weapon_skill>
+                    </2>
+                </0>
+                <1>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Fell Cleave</weapon_skill>
+                    </1>
+                </1>
+                <2>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Fell Cleave</weapon_skill>
+                    </1>
+                </2>
+            </ukkosfell>
+            <victorysmite>
+                <0>
+                    <1>
+                        <aftermath>3</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Victory Smite</weapon_skill>
+                    </1>
+                </0>
+                <1>
+                    <1>
+                        <aftermath>0</aftermath>
+                        <tp_point>1000</tp_point>
+                        <weapon_skill>Victory Smite</weapon_skill>
+                    </1>
+                </1>
+            </victorysmite>
         </wssets>
     </global>
-    <zerodragoon>
-        <display>
-            <text>
-                <fonts>
-
-                </fonts>
-            </text>
-        </display>
-        <skip_bursts>true</skip_bursts>
-        <skip_unchainable>true</skip_unchainable>
-    </zerodragoon>
 </settings>
